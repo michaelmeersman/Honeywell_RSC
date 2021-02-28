@@ -11,5 +11,6 @@ The program works by using several functions that the ADC requires for communica
 
 TI ADC Datasheet:
 https://www.ti.com/lit/ds/symlink/ads1220.pdf?ts=1614554996980&ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252FADS1220
+
 Honeywell RSC Datasheet:
 https://sensing.honeywell.com/honeywell-sensing-trustability-rsc-series-data-sheet-32321348.pdf
