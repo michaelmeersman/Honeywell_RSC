@@ -1,19 +1,11 @@
-/*
-  circuit:
-  pin name     pin number on Arduino
-    DRDY         6
-    CS_EE        7
-    CS_ADC       8
-    MOSI (DIN)   11
-    MISO (DOUT)  12
-    SCK          13
-*/
+/* This program uses a Teensy 4.0 to read pressure data from 3 Honeywell RSC sensors */
+
+
 #include <Arduino.h>
 #include "Honeywell_RSC_rework_t4.h"
 #include <SPI.h>
 
-// pins used for the connection with the sensor
-// the other you need are controlled by the SPI library):
+
 #define DRDY1_PIN      10
 #define CS_EE1_PIN     1
 #define CS_ADC1_PIN    2
@@ -64,7 +56,7 @@ void setup() {
   // Force setup to wait until serial monitor is open (comment if you dont want to use serial monitor!)
   while (!Serial) {}
 
-  // print sensor information
+  // print sensor information -- this is not necessary, but is a good sanity check that things are working properly
   Serial.println();
   Serial.print("catalog listing:\t");
   Serial.println(rsc1.catalog_listing());
@@ -137,7 +129,7 @@ void setup() {
 //   }
 // }
 
-// For two sensors, read each temperature once, then 10x pressure each
+// For three sensors, read each temperature once, then 10x pressure each
 void loop() {
 
   rsc1.get_temperature();
