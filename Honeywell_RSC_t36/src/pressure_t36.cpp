@@ -1,10 +1,11 @@
+/* This program uses a Teensy 4.0 to read pressure data from 3 Honeywell RSC sensors */
+
 #include <Arduino.h>
 #include "Honeywell_RSC_rework_t36.h"
 #include <SPI.h>
 
-// pins used for the connection with the sensor
-// the other you need are controlled by the SPI library):
-#define DRDY1_PIN      15
+// Each sensor must have a separate data ready pin
+#define DRDY1_PIN      14
 #define CS_EE1_PIN     5
 #define CS_ADC1_PIN    6
 
@@ -12,8 +13,6 @@
 #define CS_EE2_PIN     7
 #define CS_ADC2_PIN    8
 
-#define samplerate     2 // in Hz
-int sampledelay = 1/samplerate*1000; // in ms
 
 // create Honeywell_RSC objects
 Honeywell_RSC rsc1(
@@ -29,21 +28,21 @@ Honeywell_RSC rsc2(
 
 
 void setup() {
-  // open serial communication
+  // Open serial communication
   Serial.begin(9600);
 
-  // open SPI communication
+  // Open SPI communication
   SPI.begin();
   delay(5);
 
-  // initialse pressure sensor
+  // Initialize pressure sensor
   rsc1.init();
   rsc2.init();
 
   // Force setup to wait until serial monitor is open (comment if you dont want to use serial monitor!)
   while (!Serial) {}
 
-  // print sensor information
+  // Print sensor information -- this is not necessary, but is a good sanity check that things are working properly
   Serial.println();
   Serial.print("catalog listing:\t");
   Serial.println(rsc1.catalog_listing());
@@ -108,14 +107,8 @@ void loop() {
   rsc2.get_temperature();
 
   for (int i = 0; i<10; ++i){
-    // Serial.println();
-    // Serial.print(temp1,4);
-    // Serial.print('\t');
-    // Serial.print(temp2,4);
-    // Serial.print('\t');
     rsc1.select_pressure();
     Serial.print(rsc1.read_pressure(),4);
-    // Do we need a delay here??
     Serial.print('\t');
     rsc2.select_pressure();
     Serial.println(rsc2.read_pressure(),4);

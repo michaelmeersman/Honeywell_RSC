@@ -5,7 +5,7 @@
 #include "Honeywell_RSC_rework_t4.h"
 #include <SPI.h>
 
-
+// Each sensor must have a separate data ready pin
 #define DRDY1_PIN      10
 #define CS_EE1_PIN     1
 #define CS_ADC1_PIN    2
@@ -39,16 +39,16 @@ Honeywell_RSC rsc3(
 
 
 void setup() {
-  // open serial communication
+  // Open serial communication
   Serial.begin(9600);
 
-  // open SPI communication
+  // Open SPI communication
   SPI.begin();
 
-  // allowtime to setup SPI
+  // Allowtime to setup SPI
   delay(50);
 
-  // initialse pressure sensor
+  // Initialize pressure sensor
   rsc1.init();
   rsc2.init();
   rsc3.init();
@@ -56,7 +56,7 @@ void setup() {
   // Force setup to wait until serial monitor is open (comment if you dont want to use serial monitor!)
   while (!Serial) {}
 
-  // print sensor information -- this is not necessary, but is a good sanity check that things are working properly
+  // Print sensor information -- this is not necessary, but is a good sanity check that things are working properly
   Serial.println();
   Serial.print("catalog listing:\t");
   Serial.println(rsc1.catalog_listing());
