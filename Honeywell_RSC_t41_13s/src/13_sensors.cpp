@@ -4,38 +4,7 @@
 #include <Arduino.h>
 #include "Honeywell_RSC_rework_t41.h"
 #include <SPI.h>
-
-// Each sensor must have a separate data ready pin
-#define DRDY1_PIN      2
-#define CS_EE1_PIN     1
-#define CS_ADC1_PIN    0
-
-#define DRDY2_PIN      5
-#define CS_EE2_PIN     4
-#define CS_ADC2_PIN    3
-
-#define DRDY3_PIN      8
-#define CS_EE3_PIN     7
-#define CS_ADC3_PIN    6
-
-// create Honeywell_RSC instance
-Honeywell_RSC rsc1(
-  DRDY1_PIN,   // data ready
-  CS_EE1_PIN,  // chip select EEPROM (active-low)
-  CS_ADC1_PIN  // chip select ADC (active-low)
-);
-
-Honeywell_RSC rsc2(
-  DRDY2_PIN,   // data ready
-  CS_EE2_PIN,  // chip select EEPROM (active-low)
-  CS_ADC2_PIN  // chip select ADC (active-low)
-);
-
-Honeywell_RSC rsc3(
-  DRDY3_PIN,   // data ready
-  CS_EE3_PIN,  // chip select EEPROM (active-low)
-  CS_ADC3_PIN  // chip select ADC (active-low)
-);
+#include <Sensor_config.h>
 
 
 void setup() {
