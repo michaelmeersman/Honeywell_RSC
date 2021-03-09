@@ -54,53 +54,53 @@ void setup() {
   rsc3.init();
 
   // Force setup to wait until serial monitor is open (comment if you dont want to use serial monitor!)
-  while (!Serial) {}
+  // while (!Serial) {}
 
   // Print sensor information -- this is not necessary, but is a good sanity check that things are working properly
-  Serial.println();
-  Serial.print("catalog listing:\t");
-  Serial.println(rsc1.catalog_listing());
-  Serial.print("serial number:\t\t");
-  Serial.println(rsc1.serial_number());
-  Serial.print("pressure range:\t\t");
-  Serial.println(rsc1.pressure_range());
-  Serial.print("pressure minimum:\t");
-  Serial.println(rsc1.pressure_minimum());
-  Serial.print("pressure unit:\t\t");
-  Serial.println(rsc1.pressure_unit_name());
-  Serial.print("pressure type:\t\t");
-  Serial.println(rsc1.pressure_type_name());
-  Serial.println();
+  // Serial.println();
+  // Serial.print("catalog listing:\t");
+  // Serial.println(rsc1.catalog_listing());
+  // Serial.print("serial number:\t\t");
+  // Serial.println(rsc1.serial_number());
+  // Serial.print("pressure range:\t\t");
+  // Serial.println(rsc1.pressure_range());
+  // Serial.print("pressure minimum:\t");
+  // Serial.println(rsc1.pressure_minimum());
+  // Serial.print("pressure unit:\t\t");
+  // Serial.println(rsc1.pressure_unit_name());
+  // Serial.print("pressure type:\t\t");
+  // Serial.println(rsc1.pressure_type_name());
+  // Serial.println();
 
-  Serial.println();
-  Serial.print("catalog listing:\t");
-  Serial.println(rsc2.catalog_listing());
-  Serial.print("serial number:\t\t");
-  Serial.println(rsc2.serial_number());
-  Serial.print("pressure range:\t\t");
-  Serial.println(rsc2.pressure_range());
-  Serial.print("pressure minimum:\t");
-  Serial.println(rsc2.pressure_minimum());
-  Serial.print("pressure unit:\t\t");
-  Serial.println(rsc2.pressure_unit_name());
-  Serial.print("pressure type:\t\t");
-  Serial.println(rsc2.pressure_type_name());
-  Serial.println();
+  // Serial.println();
+  // Serial.print("catalog listing:\t");
+  // Serial.println(rsc2.catalog_listing());
+  // Serial.print("serial number:\t\t");
+  // Serial.println(rsc2.serial_number());
+  // Serial.print("pressure range:\t\t");
+  // Serial.println(rsc2.pressure_range());
+  // Serial.print("pressure minimum:\t");
+  // Serial.println(rsc2.pressure_minimum());
+  // Serial.print("pressure unit:\t\t");
+  // Serial.println(rsc2.pressure_unit_name());
+  // Serial.print("pressure type:\t\t");
+  // Serial.println(rsc2.pressure_type_name());
+  // Serial.println();
 
-  Serial.println();
-  Serial.print("catalog listing:\t");
-  Serial.println(rsc3.catalog_listing());
-  Serial.print("serial number:\t\t");
-  Serial.println(rsc3.serial_number());
-  Serial.print("pressure range:\t\t");
-  Serial.println(rsc3.pressure_range());
-  Serial.print("pressure minimum:\t");
-  Serial.println(rsc3.pressure_minimum());
-  Serial.print("pressure unit:\t\t");
-  Serial.println(rsc3.pressure_unit_name());
-  Serial.print("pressure type:\t\t");
-  Serial.println(rsc3.pressure_type_name());
-  Serial.println();
+  // Serial.println();
+  // Serial.print("catalog listing:\t");
+  // Serial.println(rsc3.catalog_listing());
+  // Serial.print("serial number:\t\t");
+  // Serial.println(rsc3.serial_number());
+  // Serial.print("pressure range:\t\t");
+  // Serial.println(rsc3.pressure_range());
+  // Serial.print("pressure minimum:\t");
+  // Serial.println(rsc3.pressure_minimum());
+  // Serial.print("pressure unit:\t\t");
+  // Serial.println(rsc3.pressure_unit_name());
+  // Serial.print("pressure type:\t\t");
+  // Serial.println(rsc3.pressure_type_name());
+  // Serial.println();
 
   delay(500);
 }
@@ -137,8 +137,8 @@ void loop() {
   rsc3.get_temperature();
 
   for (int i = 0; i<10; ++i){
-    Serial.print(micros());
-    Serial.print('\t');
+    // Serial.print(micros());
+    // Serial.print('\t');
     rsc1.select_pressure();
     Serial.print(rsc1.read_pressure(),4);
     Serial.print('\t');
