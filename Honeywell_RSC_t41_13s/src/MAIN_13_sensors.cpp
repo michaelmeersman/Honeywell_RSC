@@ -9,7 +9,7 @@
 
 void setup() {
   // Open serial communication
-  Serial.begin(9600);
+  Serial.begin(256000);
 
   // Open SPI communication
   SPI.begin();
@@ -46,7 +46,7 @@ void setup() {
   delay(50);
 
   // Force setup to wait until serial monitor is open (comment if you dont want to use serial monitor!)
-  while (!Serial) {}
+  // while (!Serial) {}
 
 
 
@@ -123,7 +123,7 @@ void setup() {
 //   }
 // }
 
-// For three sensors, read each temperature once, then 10x pressure each
+// For all sensors, read each temperature once, then 10x pressure each
 void loop() {
 
   rsc1.get_temperature();
@@ -141,8 +141,7 @@ void loop() {
   rsc13.get_temperature();
 
   for (int i = 0; i<10; ++i){
-    // Serial.print(micros());
-    // Serial.print('\t');
+
     rsc1.select_pressure();
     Serial.print(rsc1.read_pressure(),4);
     Serial.print('\t');
