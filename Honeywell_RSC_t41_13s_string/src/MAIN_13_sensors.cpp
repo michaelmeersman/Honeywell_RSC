@@ -1,6 +1,5 @@
 /* This program uses a Teensy 4.0 to read pressure data from 3 Honeywell RSC sensors */
 
-
 #include <Arduino.h>
 #include "Honeywell_RSC_rework_t41_13s.h"
 #include <SPI.h>
@@ -10,10 +9,8 @@
 void setup() {
   // Open serial communication
   Serial.begin(115200);
-
   // Open SPI communication
   SPI.begin();
-
   // Allowtime to setup SPI
   delay(100);
 
@@ -64,80 +61,75 @@ void setup() {
   // Serial.println(rsc1.pressure_type_name());
   // Serial.println();
 
-  delay(50);
+  delay(500);
 }
 
-int multiplier = 10000;
-byte buf[26];
-short p_vals[13];
-
+int sig_dig = 3;
 void loop() {
-  rsc1.get_temperature();
-  rsc2.get_temperature(); 
-  rsc3.get_temperature();
-  rsc4.get_temperature();
-  rsc5.get_temperature();
-  rsc6.get_temperature();
-  rsc7.get_temperature();
-  rsc8.get_temperature();
-  rsc9.get_temperature();
-  rsc10.get_temperature();
-  rsc11.get_temperature();
-  rsc12.get_temperature();
-  rsc13.get_temperature();
+rsc1.get_temperature();
+rsc2.get_temperature();
+rsc3.get_temperature();
+rsc4.get_temperature();
+rsc5.get_temperature();
+rsc6.get_temperature();
+rsc7.get_temperature();
+rsc8.get_temperature();
+rsc9.get_temperature();
+rsc10.get_temperature();
+rsc11.get_temperature();
+rsc12.get_temperature();
+rsc13.get_temperature();
 
   for (int i = 0; i < 10; i++) {
-
     rsc1.select_pressure();
-    p_vals[0] = rsc1.read_pressure()*multiplier;
+    Serial.print(rsc1.read_pressure(),sig_dig);
+    Serial.print('\t');
 
     rsc2.select_pressure();
-    p_vals[1] = rsc2.read_pressure()*multiplier;
+    Serial.print(rsc2.read_pressure(),sig_dig);
+    Serial.print('\t');
 
     rsc3.select_pressure();
-    p_vals[2] = rsc3.read_pressure()*multiplier;
+    Serial.print(rsc3.read_pressure(),sig_dig);
+    Serial.print('\t');
 
     rsc4.select_pressure();
-    p_vals[3] = rsc4.read_pressure()*multiplier;
+    Serial.print(rsc4.read_pressure(),sig_dig);
+    Serial.print('\t');
 
     rsc5.select_pressure();
-    p_vals[4] = rsc5.read_pressure()*multiplier;
+    Serial.print(rsc5.read_pressure(),sig_dig);
+    Serial.print('\t');
 
     rsc6.select_pressure();
-    p_vals[5] = rsc6.read_pressure()*multiplier;
+    Serial.print(rsc6.read_pressure(),sig_dig);
+    Serial.print('\t');
 
     rsc7.select_pressure();
-    p_vals[6] = rsc7.read_pressure()*multiplier;
+    Serial.print(rsc7.read_pressure(),sig_dig);
+    Serial.print('\t');
 
     rsc8.select_pressure();
-    p_vals[7] = rsc8.read_pressure()*multiplier;
+    Serial.print(rsc8.read_pressure(),sig_dig);
+    Serial.print('\t');
 
     rsc9.select_pressure();
-    p_vals[8] = rsc9.read_pressure()*multiplier;
+    Serial.print(rsc9.read_pressure(),sig_dig);
+    Serial.print('\t');
 
     rsc10.select_pressure();
-    p_vals[9] = rsc10.read_pressure()*multiplier;
+    Serial.print(rsc10.read_pressure(),sig_dig);
+    Serial.print('\t');
 
     rsc11.select_pressure();
-    p_vals[10] = rsc11.read_pressure()*multiplier;
+    Serial.print(rsc11.read_pressure(),sig_dig);
+    Serial.print('\t');
 
     rsc12.select_pressure();
-    p_vals[11] = rsc12.read_pressure()*multiplier;
-      
-    rsc13.select_pressure();
-    p_vals[12] = rsc13.read_pressure()*multiplier;
-      
-    // for (int i = 0; i<13; i++){
-    //   Serial.print(p_vals[i]);
-    //   Serial.print('\t');
-    // }
-    // Serial.println();
+    Serial.print(rsc12.read_pressure(),sig_dig);
+    Serial.print('\t');
 
-    for (int i = 0; i < 13; i++){
-      buf[2*i] = p_vals[i] >> 8;
-      buf[2*i+1] = p_vals[i] & 0x01ff;
-    }
-    Serial.write(buf,sizeof(buf));
-    Serial.println();
+    rsc13.select_pressure();
+    Serial.println(rsc13.read_pressure(),sig_dig);
   }
 }
