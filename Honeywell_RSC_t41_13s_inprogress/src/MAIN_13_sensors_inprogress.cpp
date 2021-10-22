@@ -67,7 +67,7 @@ void setup() {
   delay(50);
 }
 
-int multiplier = 10000;
+int multiplier = 1000;
 byte buf[26];
 short p_vals[13];
 
@@ -88,42 +88,55 @@ void loop() {
 
   for (int i = 0; i < 10; i++) {
 
+    // rsc1.get_temperature();
     rsc1.select_pressure();
     p_vals[0] = rsc1.read_pressure()*multiplier;
 
+    // rsc2.get_temperature();
     rsc2.select_pressure();
     p_vals[1] = rsc2.read_pressure()*multiplier;
 
+    // rsc3.get_temperature();
     rsc3.select_pressure();
     p_vals[2] = rsc3.read_pressure()*multiplier;
 
+    // rsc4.get_temperature();
     rsc4.select_pressure();
     p_vals[3] = rsc4.read_pressure()*multiplier;
 
+    // rsc5.get_temperature();
     rsc5.select_pressure();
     p_vals[4] = rsc5.read_pressure()*multiplier;
 
+    // rsc6.get_temperature();
     rsc6.select_pressure();
     p_vals[5] = rsc6.read_pressure()*multiplier;
 
+    // rsc7.get_temperature();
     rsc7.select_pressure();
     p_vals[6] = rsc7.read_pressure()*multiplier;
 
+    // rsc8.get_temperature();
     rsc8.select_pressure();
     p_vals[7] = rsc8.read_pressure()*multiplier;
 
+    // rsc9.get_temperature();
     rsc9.select_pressure();
     p_vals[8] = rsc9.read_pressure()*multiplier;
 
+    // rsc10.get_temperature();
     rsc10.select_pressure();
     p_vals[9] = rsc10.read_pressure()*multiplier;
 
+    // rsc11.get_temperature();
     rsc11.select_pressure();
     p_vals[10] = rsc11.read_pressure()*multiplier;
 
+    // rsc12.get_temperature();
     rsc12.select_pressure();
     p_vals[11] = rsc12.read_pressure()*multiplier;
-      
+
+    // rsc13.get_temperature();  
     rsc13.select_pressure();
     p_vals[12] = rsc13.read_pressure()*multiplier;
       
@@ -133,9 +146,11 @@ void loop() {
     // }
     // Serial.println();
 
-    for (int i = 0; i < 13; i++){
-      buf[2*i] = p_vals[i] >> 8;
-      buf[2*i+1] = p_vals[i] & 0x01ff;
+    for (int g = 0; g < 13; g++){
+      buf[2*g] = p_vals[g] >> 8;
+      buf[2*g+1] = p_vals[g] & 0x01ff;
+      // Serial.print(p_vals[g]);
+      // Serial.print('\t');
     }
     Serial.write(buf,sizeof(buf));
     Serial.println();
